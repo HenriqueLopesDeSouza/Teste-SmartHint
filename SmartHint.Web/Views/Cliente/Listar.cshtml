@@ -1,0 +1,91 @@
+﻿@model SmartHint.Application.ViewModel.ListarClienteViewModel
+@{
+    var listagem = ViewData["Listagem"] as IEnumerable<SmartHint.Application.ViewModel.ListarClienteViewModel>;
+}
+<br />
+<br />
+<partial name="_Notification" />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10  text-end">
+            <h4>
+                Consulte os seus Clientes cadastrados na
+                sua Loja ou realize o cadastro de novos Cliente
+            </h4>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary" asp-action="Cadastrar">Adicionar Cliente</a>
+        </div>
+    </div>
+    <br />
+        <form asp-action="Listar" method="post" id="Listar">
+
+    <div class="row">
+        <div class="col-md-11 text-end">
+            <button id="filtrarBtn" type="button" class="btn btn-secondary">Filtrar</button>
+        </div>
+    </div>
+    <br />
+    <div id="areaFiltros" style="display:none;">
+            <div class="container">
+            <h5>Pesquisa de Compradores</h5>
+            <div class="row">
+                    <div class="col-sm-3" style="position: relative; top: 8px;">
+                    <label asp-for="NomeRazaoSocial" class="form-label">Nome do Cliente/Razão Social</label>
+                    <input asp-for="NomeRazaoSocial" class="form-control" placeholder="Nome ou Razão Social do Cliente" autocomplete="off" />
+                </div>
+                    <div class="col-sm-3" style="position: relative; top: 8px;">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control" placeholder="E-mail do Cliente" autocomplete="off" />
+                </div>
+                    <div class="col-sm-3" style="position: relative; top: 16px;">
+                    <label asp-for="Telefone" class="control-label">Telefone</label>
+                    <input asp-for="Telefone" class="form-control" data-mask="(00) 00000-0000" autocomplete="off" placeholder="Telefone do Cliente">
+                </div>
+                    <div class="col-sm-3" style="position: relative; top: 16px;">
+                    <label asp-for="DataCadastro" class="control-label"> Data de Cadastro</label>
+                    <input asp-for="DataCadastro" class="form-control" autocomplete="off" placeholder="Selecione uma data ou período">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-sm-3">
+                    <label asp-for="Bloqueado" class="form-label">Bloqueado</label>
+                    <select asp-for="Bloqueado" name="Bloqueado" class="form-control" asp-items="@ViewBag.Bloqueado">
+                    </select>
+                </div>
+                <div class="col-sm-4" style="position: relative; top: 35px;">
+                    <button id="limparFiltrosBtn" type="button" class="btn btn-secondary">Limpar filtros</button>
+                    <button type="submit" class="btn btn-primary">Aplicar filtros</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="container .col-xl-12">
+        <div class="row">
+                @Html.AjaxGrid(Url.Action("Grid","Cliente",Model
+                //new
+                //    {
+                //    nomeRazaoSocial = Model?.NomeRazaoSocial,
+                //    email =  Model?.Email,
+                //    telefone   = Model?.Telefone,
+                //    dataCadastro = Model?.DataCadastro,
+                //    bloqueado =  Model?.Bloqueado,
+                //    model =  Model
+                //    }
+                ))  
+        </div>
+    </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/Clientes/ListarClientes.js?@Guid.NewGuid().ToString()"></script>
+}

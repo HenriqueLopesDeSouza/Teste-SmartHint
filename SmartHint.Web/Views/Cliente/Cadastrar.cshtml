@@ -1,0 +1,150 @@
+﻿@model SmartHint.Application.ViewModel.CadastrarClienteViewModel
+<div class="row">
+    <div class="col-md-10 text-right">
+        <h4>
+            Adicionar Cliente
+        </h4>
+    </div>
+</div>
+<partial name="_Notification"/>
+
+<div class="container mt-4">
+    <form asp-action="Cadastrar" method="post" id="Criar">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h5>Cadastro de Cliente</h5>
+                <div class="mb-3">
+                    <label asp-for="Nome" class="form-label">Nome do Cliente/Razão Social</label>
+                    <input asp-for="Nome" class="form-control" data-toggle="tooltip" data-placement="top" title="Nome completo ou Razão Social do Cliente" maxlength="150" autocomplete="off" required />
+                    <span asp-validation-for="Nome" class="text-danger" ></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">E-Mail</label>
+                    <input asp-for="Email" class="form-control" data-toggle="tooltip" data-placement="top" title="E-mail do Cliente" maxlength="150" autocomplete="off" required />
+                    <span asp-validation-for="Email" class="text-danger" ></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Telefone" class="form-label">Telefone</label>
+                    <input asp-for="Telefone" class="form-control" data-mask="(00) 00000-0000" data-toggle="tooltip" data-placement="top" title="Telefone do Cliente" autocomplete="off" required />
+                    <span asp-validation-for="Telefone" class="text-danger" ></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DataCadastro" class="form-label">Data de Cadastro</label>
+                    <input asp-for="DataCadastro" class="form-control" disabled />
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <h5>Informações Pessoais</h5>
+                <div class="mb-3">
+                    <label asp-for="TipoPessoa" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o tipo de Pessoa">Tipo Pessoa</label>
+                    <select asp-for="TipoPessoa" name="TipoPessoa" class="form-control" asp-items="@ViewBag.TiposDePessoa">
+                        <option value="" disabled selected>Selecione o tipo de Pessoa</option>
+                    </select>
+                    <span asp-validation-for="TipoPessoa" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CpfCnpj" class="form-label">CPF/CNPJ</label>
+                    <input asp-for="CpfCnpj" class="form-control" autocomplete="off"
+                        data-toggle="tooltip" 
+                        data-placement="top" 
+                        title="Insira o CPF ou o CNPJ do Cliente"
+                        maxlength="18"
+                        required />
+                    <span asp-validation-for="CpfCnpj" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-9 ml-auto">
+                            <label asp-for="InscricaoEstadual" class="form-label">Inscrição Estadual</label>
+                            <input asp-for="InscricaoEstadual" class="form-control" data-bs-toggle="tooltip" data-bs-placement="top" autocomplete="off"
+                                   title="Inscrição Estadual do Cliente, selecionar Isento caso assim for"
+                                   maxlength="12"
+                                   data-mask="000.000.000-000"
+                                   data-mask-visible="true" />
+                            <span asp-validation-for="InscricaoEstadual" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-3 ml-auto" style="position: relative; top: 35px;">
+                            <div class="form-check">
+                                <input asp-for="Isento" class="form-check-input" type="checkbox" autocomplete="off">
+                                <label asp-for="Isento" class="form-check-label" for="flexCheckDefault">
+                                    Isento
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3" id="CamposPessoaFisica" style="display: none;">
+                <h5>Pessoa Física</h5>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-7 ml-auto">
+                            <label asp-for="Genero" class="form-label">Gênero</label>
+                            <select asp-for="Genero" name="Genero" class="form-control" asp-items="@ViewBag.Genero"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o gênero do Cliente.">
+                                <option value="" disabled selected>Selecione o tipo de Pessoa</option>
+                            </select>
+                            <span asp-validation-for="Genero" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-5 ml-auto" style="position: relative; top: 8px;">
+                            <label asp-for="DataNascimento" class="control-label">Data de Nascimento</label>
+                            <input asp-for="DataNascimento" class="form-control" data-bs-toggle="tooltip"
+                                   data-bs-placement="top" title="Data de nascimento do Cliente." autocomplete="off" />
+                            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <h5>Situação do Cliente</h5>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input asp-for="Bloqueado" class="form-check-input" type="checkbox" data-toggle="tooltip"
+                               data-placement="top" title="Bloqueio o acesso do Cliente na sua Loja" autocomplete="off">
+                        <label asp-for="Bloqueado" class="form-check-label" for="flexCheckDefault">
+                            Bloqueado
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-3">
+                <h5>Senha de Acesso</h5>
+                <div class="row">
+                    <div class="col-md-5 ml-auto">
+                        <label asp-for="Senha" class="control-label"></label>
+                        <input asp-for="Senha" class="form-control" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" title="Cadastre a senha de acesso do seu Cliente"
+                               autocomplete="off" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-5 ml-auto">
+                        <label asp-for="ConfirmacaoSenha" class="control-label">Confirmação de Senha</label>
+                        <input asp-for="ConfirmacaoSenha" class="form-control" data-bs-toggle="tooltip" 
+                        data-bs-placement="top"
+                        autocomplete="off"
+                        title="Cadastre a confirmação senha de acesso do seu Cliente" />
+                        <span asp-validation-for="ConfirmacaoSenha" class="text-danger"></span>
+                    </div>
+                </div>      
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-8 text-right">
+            </div>
+            <div class="col-md-4 ml-auto text-right">
+                <a class="btn btn-secondary" asp-action="Listar">Voltar</a>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/Clientes/CriarCliente.js?@Guid.NewGuid().ToString()"></script>
+}

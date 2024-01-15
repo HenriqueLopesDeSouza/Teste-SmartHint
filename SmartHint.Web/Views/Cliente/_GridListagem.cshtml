@@ -1,0 +1,21 @@
+﻿@model IEnumerable<SmartHint.Application.ViewModel.ListarClienteViewModel>
+@(
+Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+            columns.Add(model => Html.CheckBox("Check_" + model.Id)).Titled(Html.CheckBox("checkAll", false, new { onclick = "checkControle()" })).Css("check-todos text-center");
+            columns.Add(model => model.NomeRazaoSocial).Titled("Nome do Cliente/Razão Social");
+            columns.Add(model => model.Email).Titled("E-mail");
+            columns.Add(model => model.Telefone).Titled("Telefone");
+            columns.Add(model => model.DataCadastro.Value.ToString("dd/MM/yyyy")).Titled("Data de cadastro");
+            columns.Add(model => Html.CheckBox("Bloqueado_" + model.Id, model.Bloqueado.Value)).Titled("Bloqueado");
+            columns.Add(model => $"<a  href='Editar/{model.Id}' >Edit</a>").Encoded(false).Titled("Ações");
+        })
+        .Empty("Não foram Encontrados Clientes")
+        .Pageable(pager =>
+        {
+            pager.RowsPerPage = 20;
+        })
+        .Sortable()
+    )
