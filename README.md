@@ -19,7 +19,7 @@
     ● O padrão de arquitetura Model-View-Controller (MVC), contribuindo para uma organização elegante e modular do código-fonte.
 
 
-## Segurança para senha foi implementado o criptografia de hash 
+### Segurança para senha foi implementado o criptografia de hash 
 ![Captura de tela 2024-01-15 231442](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/3fc6dbfd-6fa1-4e32-ac2e-817e27f1679a)
 ![Captura de tela 2024-01-15 231659](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/b376637c-4ba5-4df3-8f1f-9bf74122a840)
 
