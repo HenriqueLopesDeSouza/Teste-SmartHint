@@ -53,9 +53,9 @@
 ![Captura de tela 2024-01-15 222454](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/7e182b70-ecd6-4ba0-be63-384fae09b18a)
 
 ### Como executar 
- ● 1 - Altere a string de conexão do banco de dados
- ● 2 - No Package Manager Console, mude o Default project para SmartHint.Infrastucture e digite o comando Update-DataBase 
- ● 3 - Builde o projeto 
+    ● Linguagem: .Net ou .Net Core
+    ● Banco de dados: MYSQL
+
  
  ![create](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/4fdbdb4d-a006-4228-be75-a040f58e94b0)
 
