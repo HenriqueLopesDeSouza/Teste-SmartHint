@@ -32,6 +32,9 @@
 
 ![paginacao](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/3ab915b0-d907-4348-add0-f1eecc10f3d6)
 
+![select_giddd](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/2880e5f1-3fcd-47e4-bcc5-88f85b3d4e3f)
+
+
 ## Tela Cadastro - Cadastro de Clientes
 
 ![inserir](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/591492ae-cfb6-4103-a091-2ec86a4594a5)
@@ -41,6 +44,9 @@
 ![inserir_usuario_2](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/17d08169-d2c0-432c-bc3b-a773fb182759)
 
 ![inserir2](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/12673fa8-d62f-44f3-b2aa-97ea64cc7b62)
+
+![cadastrar23](https://github.com/HenriqueLopesDeSouza/Teste-SmartHint/assets/43977679/767aa369-86e2-4806-867e-3804295bb720)
+
 
 ## Estrutura de Diretórios
 
